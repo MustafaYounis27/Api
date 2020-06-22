@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity
 {
     private FragmentManager fragmentManager;
     BottomNavigationView bottomNavigationView;
+
+    String country;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -27,27 +30,47 @@ public class MainActivity extends AppCompatActivity
         fragmentManager=getSupportFragmentManager ();
         fragmentManager
                 .beginTransaction ()
-                .add ( R.id.container, new NewsFragment ( "sports" ) )
+                .add ( R.id.container, new NewsFragment ( "sports", "eg" ) )
                 .commit ();
         initBottom();
-        initActionBar();
     }
 
-    private void initActionBar()
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
     {
-        ActionBar actionBar = getSupportActionBar ();
-        actionBar.setDisplayHomeAsUpEnabled ( true );
+        getMenuInflater ().inflate ( R.menu.country_menu,menu );
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
-        if (item.getItemId () == android.R.id.home)
+        item.setOnMenuItemClickListener ( new MenuItem.OnMenuItemClickListener ()
         {
-            onBackPressed ();
-        }
+            @Override
+            public boolean onMenuItemClick(MenuItem item)
+            {
+                switch (item.getItemId ())
+                {
+                    case R.id.egypt:
+                        country="eg";
+                        break;
 
-        return super.onOptionsItemSelected ( item );
+                    case R.id.germany:
+                        country="de";
+                        break;
+
+                    case R.id.ksa:
+                        country="sa";
+                        break;
+                }
+
+                return false;
+            }
+        } );
+
+        loadFragment ( new NewsFragment ( "sports", country ) );
+        return true;
     }
 
     private void initBottom()
@@ -60,17 +83,17 @@ public class MainActivity extends AppCompatActivity
                 switch(item.getItemId ())
                 {
                     case R.id.sports:
-                        loadFragment ( new NewsFragment ( "sports" ) );
+                        loadFragment ( new NewsFragment ( "sports", country ) );
                         item.setChecked ( true );
                         break;
 
                     case R.id.science:
-                        loadFragment ( new NewsFragment ( "science" ) );
+                        loadFragment ( new NewsFragment ( "science", country ) );
                         item.setChecked ( true );
                         break;
 
                     case R.id.technology:
-                        loadFragment ( new NewsFragment ( "technology" ) );
+                        loadFragment ( new NewsFragment ( "technology", country ) );
                         item.setChecked ( true );
                         break;
                 }
@@ -87,4 +110,5 @@ public class MainActivity extends AppCompatActivity
                 .replace ( R.id.container,fragment )
                 .commit ();
     }
+
 }

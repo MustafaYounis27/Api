@@ -33,14 +33,15 @@ public class NewsFragment extends Fragment
 {
     private View NewsFragment;
 
-    private String category;
+    private String category, country;
 
     private newsAdapter adapter;
     RecyclerView recyclerView;
 
-    public NewsFragment(String category)
+    public NewsFragment(String category, String country)
     {
         this.category = category;
+        this.country = country;
     }
 
     @Nullable
@@ -56,12 +57,12 @@ public class NewsFragment extends Fragment
     {
         super.onActivityCreated ( savedInstanceState );
         initRecycler();
-        getData(category);
+        getData(category,country);
     }
 
-    private void getData(String category)
+    private void getData(String category, String country)
     {
-        RetrofitClient.RetrofitInstance ().getNews ( "eg",category,"b37eced752654858b1084bce0583a432" ).enqueue ( new Callback<NewsModel> () {
+        RetrofitClient.getInstance ().getNews ( country,category,"b37eced752654858b1084bce0583a432" ).enqueue ( new Callback<NewsModel> () {
             @Override
             public void onResponse(Call<NewsModel> call, Response<NewsModel> response) {
                 if(response.isSuccessful () && response.code () == 200)

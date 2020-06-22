@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/egypt"
+        android:title="egypt"
+        />
+
+    <item
+        android:id="@+id/germany"
+        android:title="Germany"
+        />
+
+    <item
+        android:id="@+id/ksa"
+        android:title="Saudi Arabia"
+        />
+</menu>

@@ -23,7 +23,7 @@ public class RetrofitClient
         retrofitHelper = retrofit.create ( RetrofitHelper.class );
     }
 
-    static public RetrofitClient RetrofitInstance()
+    static public RetrofitClient getInstance()
     {
         if (retrofitClient==null)
         {
