@@ -17,10 +17,6 @@ public class NewsModel
         return articles;
     }
 
-    public void setArticles(List<Items> articles) {
-        this.articles = articles;
-    }
-
     public class Items
     {
         @SerializedName ( "title" )

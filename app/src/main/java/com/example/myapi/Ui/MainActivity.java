@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.myapi.R;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity
@@ -45,31 +46,27 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
-        item.setOnMenuItemClickListener ( new MenuItem.OnMenuItemClickListener ()
+        switch (item.getItemId())
         {
-            @Override
-            public boolean onMenuItemClick(MenuItem item)
-            {
-                switch (item.getItemId ())
-                {
-                    case R.id.egypt:
-                        country="eg";
-                        break;
+            case R.id.egypt:
+                System.out.println("country");
+                country = "eg";
+                loadFragment ( new NewsFragment ( "sports", country ) );
+                break;
 
-                    case R.id.germany:
-                        country="de";
-                        break;
+            case R.id.germany:
+                System.out.println("country");
+                country="de";
+                loadFragment ( new NewsFragment ( "sports", country ) );
+                break;
 
-                    case R.id.ksa:
-                        country="sa";
-                        break;
-                }
+            case R.id.ksa:
+                System.out.println("country");
+                country="sa";
+                loadFragment ( new NewsFragment ( "sports", country ) );
+                break;
+        }
 
-                return false;
-            }
-        } );
-
-        loadFragment ( new NewsFragment ( "sports", country ) );
         return true;
     }
 
@@ -105,6 +102,7 @@ public class MainActivity extends AppCompatActivity
 
     public void loadFragment(Fragment fragment)
     {
+        System.out.println(country);
         fragmentManager
                 .beginTransaction ()
                 .replace ( R.id.container,fragment )

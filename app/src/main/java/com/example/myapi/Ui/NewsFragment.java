@@ -24,6 +24,7 @@ import com.example.myapi.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +34,7 @@ public class NewsFragment extends Fragment
 {
     private View NewsFragment;
 
-    private String category, country;
+    private final String category, country;
 
     private newsAdapter adapter;
     RecyclerView recyclerView;
@@ -64,7 +65,7 @@ public class NewsFragment extends Fragment
     {
         RetrofitClient.getInstance ().getNews ( country,category,"b37eced752654858b1084bce0583a432" ).enqueue ( new Callback<NewsModel> () {
             @Override
-            public void onResponse(Call<NewsModel> call, Response<NewsModel> response) {
+            public void onResponse(@NonNull Call<NewsModel> call, @NonNull Response<NewsModel> response) {
                 if(response.isSuccessful () && response.code () == 200)
                 {
                     NewsModel newsModel = response.body ();
@@ -79,7 +80,7 @@ public class NewsFragment extends Fragment
             }
 
             @Override
-            public void onFailure(Call<NewsModel> call, Throwable t) 
+            public void onFailure(@NonNull Call<NewsModel> call, @NonNull Throwable t)
             {
                 Toast.makeText ( getContext (), t.getMessage (), Toast.LENGTH_SHORT ).show ();
             }
@@ -91,7 +92,7 @@ public class NewsFragment extends Fragment
         recyclerView = NewsFragment.findViewById ( R.id.recycler );
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager ( getContext (),RecyclerView.VERTICAL,false );
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration ( getContext (),DividerItemDecoration.VERTICAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration (Objects.requireNonNull(getContext()),DividerItemDecoration.VERTICAL);
 
         recyclerView.setLayoutManager ( layoutManager );
         recyclerView.addItemDecoration ( dividerItemDecoration );
@@ -127,7 +128,8 @@ public class NewsFragment extends Fragment
             holder.newsDesc.setText ( desc );
             Picasso.get ()
                     .load ( image )
-                    .error ( R.drawable.error )
+                    .fit()
+                    .error ( R.drawable.error)
                     .placeholder ( R.drawable.error )
                     .into ( holder.newsImage );
             holder.openPage.setOnClickListener ( new View.OnClickListener ()
