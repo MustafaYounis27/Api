@@ -5,10 +5,13 @@
       <map>
         <entry key="..\:/Flutter/projects/Api/app/src/main/res/drawable/button_background.xml" value="0.23692307692307693" />
         <entry key="..\:/Flutter/projects/Api/app/src/main/res/drawable/edit_text_background.xml" value="0.23692307692307693" />
+        <entry key="..\:/Flutter/projects/Api/app/src/main/res/drawable/ic_egy.xml" value="0.2351851851851852" />
         <entry key="..\:/Flutter/projects/Api/app/src/main/res/drawable/ic_lock.xml" value="0.23692307692307693" />
+        <entry key="..\:/Flutter/projects/Api/app/src/main/res/drawable/ic_user.xml" value="0.2351851851851852" />
         <entry key="..\:/Flutter/projects/Api/app/src/main/res/layout/activity_login.xml" value="0.22447916666666667" />
         <entry key="..\:/Flutter/projects/Api/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
         <entry key="..\:/Flutter/projects/Api/app/src/main/res/layout/activity_splach.xml" value="0.22447916666666667" />
+        <entry key="..\:/Flutter/projects/Api/app/src/main/res/layout/activity_splash.xml" value="0.22447916666666667" />
         <entry key="..\:/Flutter/projects/Api/app/src/main/res/layout/fragment_news.xml" value="0.22447916666666667" />
         <entry key="..\:/Flutter/projects/Api/app/src/main/res/layout/news_item.xml" value="0.22447916666666667" />
         <entry key="..\:/Flutter/projects/Api/app/src/main/res/menu/country_menu.xml" value="0.22447916666666667" />

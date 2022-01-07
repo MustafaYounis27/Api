@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(emailField.getText().toString().equals("admin@team.com") || passwordField.getText().toString().equals("123456")){
                         Intent IntentToMAinActivity = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(IntentToMAinActivity);
+                        finish();
                     } else{
                         Toast.makeText(getApplicationContext(), "Email or Password is not correct", Toast.LENGTH_SHORT).show();
                     }

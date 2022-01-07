@@ -28,10 +28,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
 
+        country = "eg";
         fragmentManager=getSupportFragmentManager ();
         fragmentManager
                 .beginTransaction ()
-                .add ( R.id.container, new NewsFragment ( "sports", "eg" ) )
+                .add ( R.id.container, new NewsFragment ( "sports", country ) )
                 .commit ();
         initBottom();
     }
@@ -49,23 +50,20 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId())
         {
             case R.id.egypt:
-                System.out.println("country");
                 country = "eg";
-                loadFragment ( new NewsFragment ( "sports", country ) );
                 break;
 
             case R.id.germany:
-                System.out.println("country");
                 country="de";
-                loadFragment ( new NewsFragment ( "sports", country ) );
                 break;
 
-            case R.id.ksa:
-                System.out.println("country");
-                country="sa";
-                loadFragment ( new NewsFragment ( "sports", country ) );
+            case R.id.france:
+                country="fr";
                 break;
         }
+
+        bottomNavigationView.getMenu().getItem(0).setChecked(true);
+        loadFragment ( new NewsFragment ( "sports", country ) );
 
         return true;
     }
@@ -102,7 +100,6 @@ public class MainActivity extends AppCompatActivity
 
     public void loadFragment(Fragment fragment)
     {
-        System.out.println(country);
         fragmentManager
                 .beginTransaction ()
                 .replace ( R.id.container,fragment )
